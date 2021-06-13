@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM --platform=$BUILDPLATFORM alpine:edge
 RUN /bin/ash -c \
 	'echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
 	&& apk update && apk add librespot'
