@@ -37,10 +37,10 @@ Version 3.7
 services:
   librespot:
     image: 4f7a796d616e6469617334320a/librespot 
-	devices:
+    devices:
       - "/dev/snd:/dev/snd"
     network_mode: "host"
-	entrypoint: ["/usr/bin/librespot"]
-	command: [ "--name", "<YOUR-SPOTIFY-CONNECT>", "-b", "320", "--backend", "alsa", "--device", "default:CARD=Device"]
+    entrypoint: ["/usr/bin/librespot"]
+    command: [ "--name", "<YOUR-SPOTIFY-CONNECT>", "-b", "320", "--backend", "alsa", "--device", "default:CARD=Device"]
 ```
 
