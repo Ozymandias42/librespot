@@ -9,11 +9,7 @@ At the time of this writing these are:
 |Architecture | Devices|
 |-------------|--------|
 |x86\_64||
-|x86		  |old computers. <=2009|
 |aarch64	  |armv8 architectures and later. I.e. Raspberry Pi >3b|
-|armhf		  |Rasbberry Pi OS 32bit version and Raspberry Pi <=3|
-|armv7		  |Raspberry Pi <=2|
-|ppc64le	  |old iBook Macintosh computers|
 
 ## How to run
 ### Via `docker run`
