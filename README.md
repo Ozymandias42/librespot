@@ -19,7 +19,7 @@ docker run \
 	--name librespot \
 	--net host \
 	--device /dev/snd \
-	4f7a796d616e6469617334320a/librespot \
+	ghcr.io/ozymandias42/librespot:main \
 		/usr/bin/librespot \
 			--name <NAME-OF-YOUR-SPOTIFY-CONNECT-DEVICE> \
 			--bitrate <160,254,320> \
@@ -32,7 +32,7 @@ Version 3.7
 
 services:
   librespot:
-    image: 4f7a796d616e6469617334320a/librespot 
+    image: ghcr.io/ozymandias42/librespot:main 
     devices:
       - "/dev/snd:/dev/snd"
     network_mode: "host"
