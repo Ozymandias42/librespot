@@ -1,3 +1,4 @@
+[![Docker](https://github.com/Ozymandias42/librespot/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/Ozymandias42/librespot/actions/workflows/docker-publish.yml)
 # Alpine Linux based librespot container
 
 This container uses the awesome [librespot](https://github.com/librespot-org/librespot) library to transform any docker host into a spotify connect device.
