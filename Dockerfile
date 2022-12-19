@@ -15,7 +15,7 @@ RUN /bin/ash -c \
 
 #COPY . /librespot
 RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --mount=type=cache,target=/root/target,id=${TARGETPLATFORM} \
-cargo build --release --no-default-features --features "pulseaudio-backend" \
+cargo build --release --no-default-features --features "pulseaudio-backend" && \
 cargo strip && \
 mv /root/target/release/librespot /librespot/librespot
 
