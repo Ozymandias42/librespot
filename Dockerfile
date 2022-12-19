@@ -14,7 +14,11 @@ RUN /bin/ash -c \
 && ln -s /usr/bin/rustc /usr/local/sbin/rustc'
 
 #COPY . /librespot
-RUN cargo build --release --no-default-features --features "pulseaudio-backend"
+RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --mount=type=cache,target=/root/target,id=${TARGETPLATFORM} \
+cargo build --release --no-default-features --features "pulseaudio-backend" \
+cargo strip && \
+mv /root/target/release/librespot /librespot/librespot
+
 
 #RUN /bin/ash -c 'apk del rustup cargo gcc libpulse \
 #  && cp -v target/release/librespot /usr/local/bin/'
@@ -28,7 +32,7 @@ RUN cargo build --release --no-default-features --features "pulseaudio-backend"
 #	&& apk update && apk add librespot'
 
 FROM alpine:edge
-COPY --from=build /librespot/target/release/librespot /usr/local/bin/librespot
+COPY --from=build /librespot/librespot /usr/local/bin/librespot
 RUN apk --no-cache add libpulse
 ENTRYPOINT ["/usr/local/bin/librespot"]
 CMD ["--name", "librespot", "-b", "320"]
