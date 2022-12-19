@@ -9,6 +9,10 @@ RUN /bin/ash -c \
   && git clone https://github.com/librespot-org/librespot.git librespot'
 WORKDIR /librespot
 
+RUN /bin/ash -c \
+'mkdir -p /usr/local/sbin \
+&& ln -s /usr/bin/rustc /usr/local/sbin/rustc'
+
 #COPY . /librespot
 RUN cargo build --release --no-default-features --features "pulseaudio-backend"
 
