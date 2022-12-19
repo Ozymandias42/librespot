@@ -10,8 +10,7 @@ RUN /bin/ash -c \
 WORKDIR /librespot
 
 #COPY . /librespot
-RUN /bin/ash -c \
-  'cargo build --release --no-default-features --features "pulseaudio-backend" '
+RUN cargo build --release --no-default-features --features "pulseaudio-backend"
 
 #RUN /bin/ash -c 'apk del rustup cargo gcc libpulse \
 #  && cp -v target/release/librespot /usr/local/bin/'
