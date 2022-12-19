@@ -4,7 +4,8 @@ RUN echo "I'm building for $TARGETPLATFORM"
 #ADD  https://github.com/librespot-org/librespot.git librespot
 
 RUN /bin/ash -c \
-  'apk --no-cache add git rustup cargo gcc libpulse \
+  ' apk update \
+  && apk add git rustup cargo gcc libpulse \
   && git clone https://github.com/librespot-org/librespot.git librespot'
 WORKDIR /librespot
 
