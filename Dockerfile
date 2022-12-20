@@ -7,6 +7,7 @@ WORKDIR librespot
 
 RUN cargo build --release --no-default-features --features "alsa-backend" --features "pulseaudio-backend"
 
+RUN mkdir -p /usr/local/sbin && ln -s $(which rustc) /usr/local/sbin/rustc
 
 FROM fedora
 RUN dnf install -y pulseaudio-libs alsa-lib
