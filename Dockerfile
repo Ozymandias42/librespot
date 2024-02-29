@@ -6,7 +6,7 @@ ADD https://github.com/librespot-org/librespot.git /root/librespot
 WORKDIR librespot
 COPY . .
 
-RUN apt update && apt install -y build-essential apt-utils libasound2-dev libpulse-dev
+RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev
 #RUN dnf install -y cargo git pulseaudio-libs-devel gcc make alsa-lib-devel
 
 RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} \
@@ -22,7 +22,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --m
 #RUN mkdir -p /usr/local/sbin && ln -s $(which rustc) /usr/local/sbin/rustc
 
 FROM debian
-RUN apt update && apt install -y libpulse0
+RUN apt-get update && apt-get install -y libpulse0
 
 COPY --from=build  /root/librespot/target/release/librespot /usr/local/bin/librespot
 ENTRYPOINT /usr/local/bin/librespot
