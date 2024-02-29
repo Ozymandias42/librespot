@@ -2,7 +2,7 @@ FROM library/rust as build
 
 ARG TARGETPLATFORM
 
-ADD https://github.com/librespot-org/librespot.git /root/librespot
+ADD https://github.com/librespot-org/librespot.git /root/
 WORKDIR librespot
 COPY . .
 
