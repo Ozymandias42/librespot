@@ -6,7 +6,7 @@ ARG TARGETPLATFORM
 #WORKDIR librespot
 COPY . .
 
-RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev git
+RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev git ca-certificates
 #RUN dnf install -y cargo git pulseaudio-libs-devel gcc make alsa-lib-devel
 
 WORKDIR /root
