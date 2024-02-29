@@ -2,19 +2,23 @@ FROM library/rust as build
 
 ARG TARGETPLATFORM
 
-ADD https://github.com/librespot-org/librespot.git /root/
-WORKDIR librespot
+#ADD https://github.com/librespot-org/librespot.git /root/
+#WORKDIR librespot
 COPY . .
 
-RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev
+RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev git
 #RUN dnf install -y cargo git pulseaudio-libs-devel gcc make alsa-lib-devel
+
+WORKDIR /root
+RUN git clone https://github.com/librespot-org/librespot.git
+WORKDIR /root/librespot
 
 RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} \
     cargo install cargo-strip
 
 
-#RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --mount=type=cache,target=/root/target,id=${TARGETPLATFORM} \
-RUN cargo build --release --no-default-features --features "pulseaudio-backend" && \
+RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --mount=type=cache,target=/root/target,id=${TARGETPLATFORM} \
+    cargo build --release --no-default-features --features "pulseaudio-backend" && \
     cargo strip
 
 #RUN cargo build --release --no-default-features --features "alsa-backend" --features "pulseaudio-backend"
