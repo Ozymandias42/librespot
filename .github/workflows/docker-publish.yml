@@ -26,7 +26,7 @@ env:
 jobs:
   build:
 
-    runs-on: oracle-arm-vm
+    runs-on: ARM64
     permissions:
       contents: read
       packages: write
