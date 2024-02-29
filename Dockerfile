@@ -6,7 +6,7 @@ ARG TARGETPLATFORM
 #WORKDIR librespot
 COPY . .
 
-RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev git ca-certificates
+RUN apt-get update && apt-get install -y build-essential apt-utils libasound2-dev libpulse-dev git 
 #RUN dnf install -y cargo git pulseaudio-libs-devel gcc make alsa-lib-devel
 
 WORKDIR /root
@@ -26,7 +26,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --m
 #RUN mkdir -p /usr/local/sbin && ln -s $(which rustc) /usr/local/sbin/rustc
 
 FROM debian
-RUN apt-get update && apt-get install -y libpulse0
+RUN apt-get update && apt-get install -y libpulse0 ca-certificates
 
 COPY --from=build  /root/librespot/target/release/librespot /usr/local/bin/librespot
 ENTRYPOINT /usr/local/bin/librespot
