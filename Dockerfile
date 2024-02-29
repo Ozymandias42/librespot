@@ -13,8 +13,8 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} \
     cargo install cargo-strip
 
 
-RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --mount=type=cache,target=/root/target,id=${TARGETPLATFORM} \
-    cargo build --release --no-default-features --features "pulseaudio-backend" && \
+#RUN --mount=type=cache,target=/usr/local/cargo/registry,id=${TARGETPLATFORM} --mount=type=cache,target=/root/target,id=${TARGETPLATFORM} \
+RUN cargo build --release --no-default-features --features "pulseaudio-backend" && \
     cargo strip
 
 #RUN cargo build --release --no-default-features --features "alsa-backend" --features "pulseaudio-backend"
